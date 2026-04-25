@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme {
   --color-primary: #d97706;
@@ -24,8 +25,18 @@
   --color-secondary-rgb: 17, 24, 39;
 }
 
-html {
-  scroll-behavior: smooth;
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
@@ -38,12 +49,16 @@ body {
 
 /* Site header transition */
 .site-header {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .site-header.scrolled {
-  background-color: rgba(17, 24, 39, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(17, 24, 39, 0.1);
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
 }
 
 /* Hover Split Text Effect */

@@ -1,36 +1,44 @@
 import Image from "next/image";
 import SiteChrome from "@/components/SiteChrome";
+import ContactForm from "@/components/ContactForm";
+import FooterLinks from "@/components/FooterLinks";
 
 const services = [
   {
     n: "01",
     title: "Štrk a Kamenivo",
     text: "Zabezpečujeme prepravu a dovoz štrkov, pieskov, kameniva a okrasného kameniva. Neváhajte nás kontaktovať.",
+    image: "/service1.webp",
   },
   {
     n: "02",
     title: "Betónové potery",
     text: "Rovný poter Vám ušetrí ďalšie peniaze. Zabezpečujeme potery na tej najlepšej úrovni. Neváhajte nás kontaktovať.",
+    image: "/service2.webp",
   },
   {
     n: "03",
     title: "Pancierové podlahy",
     text: "Sú vysokopevnostné liaté, leštené betónové povrchy v hrúbke 12–15 cm. Vhodné do garáží, dielní a hál.",
+    image: "/service3.webp",
   },
   {
     n: "04",
     title: "Špedícia & Logistika",
     text: "Vnútroštátna a medzinárodná preprava sypkých materiálov. Prepravu ponúkame s 25t vyklopnými návesmi.",
+    image: "/hero.webp",
   },
   {
     n: "05",
     title: "Gabiónové ploty",
     text: "Ponúkame realizáciu gabiónových plotov a múrov. Sú vyrobené z pevných sietí a napĺňané prírodným kameňom.",
+    image: "/about.webp",
   },
   {
     n: "06",
     title: "Strojové omietky",
     text: "Zabezpečujeme realizáciu stabilných a profesionálnych strojových omietok, ktoré vyrovnajú každú nerovnosť.",
+    image: "/service2.webp",
   },
 ];
 
@@ -56,13 +64,18 @@ export default function Home() {
       {/* SITE HEADER */}
       <header
         id="site-header"
-        className="site-header fixed top-0 left-0 right-0 z-50 bg-transparent"
+        className="site-header fixed top-0 left-0 right-0 z-50"
       >
-        <div className="mx-auto w-[95vw] flex items-center justify-between h-16 md:h-24 px-6 md:px-10 gap-6">
+        <div className="mx-auto w-[95vw] flex items-center justify-between h-16 md:h-20 px-6 md:px-10 gap-6">
           <a href="#top" className="flex items-center shrink-0">
-            <span className="text-xl md:text-3xl font-black tracking-tighter text-white uppercase italic">
-              JAKUB<span className="text-primary">ASEK</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Jakubasek"
+              width={520}
+              height={210}
+              priority
+              className="h-9 md:h-12 w-auto"
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-10">
@@ -72,7 +85,7 @@ export default function Home() {
                 <a
                   key={l.href}
                   href={l.href}
-                  className="group text-white/80 hover:text-white text-xs font-bold tracking-[0.2em] uppercase transition-colors"
+                  className="group text-black hover:text-primary text-xs font-bold tracking-[0.2em] uppercase transition-colors"
                 >
                   <span className="hover-split-text">
                     <span
@@ -99,8 +112,19 @@ export default function Home() {
             >
               <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106a1.125 1.125 0 0 0-1.173.417l-.97 1.293a13.535 13.535 0 0 1-6.213-6.213l1.293-.97a1.125 1.125 0 0 0 .417-1.173L8.473 3.102A1.125 1.125 0 0 0 7.382 2.25H6.01a2.25 2.25 0 0 0-2.25 2.25z" />
             </svg>
-            <span className="hidden sm:inline">+421 948 300 988</span>
-            <span className="sm:hidden">Zavolať</span>
+            <span className="hover-split-text hidden sm:inline">
+              <span
+                className="hover-split-text-inner"
+                data-text="+421 948 300 988"
+              >
+                +421 948 300 988
+              </span>
+            </span>
+            <span className="hover-split-text sm:hidden">
+              <span className="hover-split-text-inner" data-text="Zavolať">
+                Zavolať
+              </span>
+            </span>
           </a>
         </div>
       </header>
@@ -252,10 +276,18 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {services.map((s, i) => (
                   <div
-                    key={s.n}
-                    className="reveal-on-scroll relative min-h-[400px] flex flex-col justify-end p-10 overflow-hidden group bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                    key={s.n + i}
+                    className="reveal-on-scroll relative min-h-[420px] flex flex-col justify-end p-10 overflow-hidden group border border-white/10 hover:border-primary/60 transition-colors"
                     style={{ transitionDelay: `${(i % 3) * 100}ms` }}
                   >
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="absolute inset-0 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-secondary/30 group-hover:from-secondary group-hover:via-secondary/70 group-hover:to-secondary/20 transition-colors" />
                     <div className="relative z-10">
                       <span className="text-primary text-[10px] font-black tracking-widest uppercase mb-4 block">
                         {s.n}
@@ -263,7 +295,7 @@ export default function Home() {
                       <h3 className="text-3xl font-black text-white uppercase italic mb-6 leading-none tracking-tighter">
                         {s.title}
                       </h3>
-                      <p className="text-white/70 font-medium text-sm tracking-wide leading-relaxed">
+                      <p className="text-white/80 font-medium text-sm tracking-wide leading-relaxed">
                         {s.text}
                       </p>
                     </div>
@@ -353,7 +385,7 @@ export default function Home() {
 
             <div className="relative z-10 mx-auto w-[95vw] px-6 md:px-10 pb-20 md:pb-32">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div>
+                <div className="reveal-on-scroll">
                   <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-20 italic">
                     Kontakt<span className="text-primary">.</span>
                   </h2>
@@ -393,82 +425,19 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col reveal-on-scroll" style={{ transitionDelay: "150ms" }}>
                   <div className="bg-white/5 border border-white/10 p-10 md:p-16 backdrop-blur-3xl h-full flex flex-col justify-center">
                     <h3 className="text-2xl font-black uppercase mb-10 italic">
                       Napíšte nám
                     </h3>
-                    <form
-                      className="flex flex-col gap-6 w-full"
-                      action="mailto:jaroslavjakubasek@gmail.com"
-                      method="post"
-                      encType="text/plain"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input
-                          type="text"
-                          name="meno"
-                          placeholder="Meno *"
-                          required
-                          className="bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
-                        />
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="E-mail *"
-                          required
-                          className="bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
-                        />
-                      </div>
-                      <textarea
-                        name="sprava"
-                        placeholder="..napíšte nám *"
-                        rows={3}
-                        required
-                        className="bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors resize-none"
-                      />
-                      <div className="mt-4">
-                        <button
-                          type="submit"
-                          className="group inline-flex items-center justify-center px-10 py-4 bg-primary text-white text-sm font-black hover:bg-primary-dark transition-all duration-300"
-                        >
-                          <span className="hover-split-text">
-                            <span
-                              className="hover-split-text-inner"
-                              data-text="Poslať"
-                            >
-                              Poslať
-                            </span>
-                          </span>
-                        </button>
-                      </div>
-                    </form>
+                    <ContactForm />
                   </div>
                 </div>
               </div>
 
               <div className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-white/40 tracking-widest uppercase">
-                <div className="flex gap-6">
-                  <a
-                    href="#onas"
-                    className="hover:text-primary transition-colors"
-                  >
-                    O nás
-                  </a>
-                  <a
-                    href="#sluzby"
-                    className="hover:text-primary transition-colors"
-                  >
-                    Naše služby
-                  </a>
-                  <a
-                    href="#referencie"
-                    className="hover:text-primary transition-colors"
-                  >
-                    Referencie
-                  </a>
-                </div>
-                <p>© Jakubasek | Všetky práva vyhradené</p>
+                <FooterLinks />
+                <p>© {new Date().getFullYear()} Jakubasek · Všetky práva vyhradené</p>
               </div>
             </div>
           </footer>

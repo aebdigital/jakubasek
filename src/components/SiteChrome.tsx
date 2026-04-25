@@ -1,9 +1,23 @@
 "use client";
 
 import { useEffect } from "react";
+import Lenis from "lenis";
 
 export default function SiteChrome() {
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      touchMultiplier: 2,
+    });
+
+    let rafId = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
     const header = document.getElementById("site-header");
 
     const onScroll = () => {
@@ -58,6 +72,8 @@ export default function SiteChrome() {
       window.removeEventListener("scroll", onScroll);
       revealObserver.disconnect();
       imageObserver.disconnect();
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
   }, []);
 
