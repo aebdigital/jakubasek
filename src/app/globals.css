@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #d97706;
+  --color-primary-light: #f59e0b;
+  --color-primary-dark: #b45309;
+  --color-secondary: #111827;
+  --color-foreground: #111827;
+  --color-muted: #6b7280;
+  --color-light: #f9fafb;
+  --color-border-soft: #e5e7eb;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --text-10xl: 7.5rem;
+  --text-10xl--line-height: 1;
+  --text-11xl: 9rem;
+  --text-11xl--line-height: 1;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary-rgb: 217, 119, 6;
+  --color-secondary-rgb: 17, 24, 39;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Site header transition */
+.site-header {
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.site-header.scrolled {
+  background-color: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hover Split Text Effect */
+.hover-split-text {
+  padding-right: 0.2em;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.1;
+  display: inline-block;
+  vertical-align: top;
+}
+.hover-split-text-inner {
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.hover-split-text-inner::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  line-height: inherit;
+}
+.group:hover .hover-split-text-inner,
+.hover-split-text:hover .hover-split-text-inner {
+  transform: translateY(-100%);
+}
+
+/* Animate on Scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image Reveal Effect */
+.image-reveal-wrapper {
+  position: relative;
+  overflow: hidden;
+  line-height: 1.1;
+}
+.image-reveal-shutter {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-secondary);
+  z-index: 10;
+  transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.image-reveal-wrapper.is-revealed .image-reveal-shutter {
+  transform: translateY(-100%);
+}
+.image-reveal-img {
+  transform: scale(1.2);
+  filter: grayscale(100%);
+  transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1),
+    filter 1.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.image-reveal-wrapper.is-revealed .image-reveal-img {
+  transform: scale(1);
+  filter: grayscale(0%);
+}
+.image-reveal-wrapper:hover .image-reveal-img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+/* Parallax */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+}
+.parallax-target {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Fade Up Delays */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up-anim 0.7s ease-out forwards;
+}
+.fade-up-1 {
+  animation-delay: 0.1s;
+}
+.fade-up-2 {
+  animation-delay: 0.2s;
+}
+.fade-up-3 {
+  animation-delay: 0.3s;
+}
+.fade-up-4 {
+  animation-delay: 0.4s;
+}
+
+@keyframes fade-up-anim {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fill-text-animation {
+  position: relative;
+  background: linear-gradient(to right, white 50%, rgba(255, 255, 255, 0.2) 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fill-text 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 1.2s;
+}
+@keyframes fill-text {
+  to {
+    background-position: 0% 0;
+  }
 }
