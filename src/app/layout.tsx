@@ -76,9 +76,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: "/hero.webp",
-        width: 1600,
-        height: 900,
+        url: "/referencie/fb-3.jpg",
+        width: 960,
+        height: 720,
         alt: "Jakubasek — Štrk, kamenivo, potery a omietky",
       },
     ],
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/hero.webp"],
+    images: ["/referencie/fb-3.jpg"],
   },
   icons: {
     icon: [{ url: "/favicon.ico" }, { url: "/logo.png", type: "image/png" }],
@@ -126,13 +126,7 @@ const jsonLd = {
   image: [
     {
       "@type": "ImageObject",
-      url: `${SITE_URL}/hero.webp`,
-      width: 1600,
-      height: 900,
-    },
-    {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/about.webp`,
+      url: `${SITE_URL}/referencie/fb-3.jpg`,
       width: 960,
       height: 720,
     },
@@ -206,6 +200,10 @@ const jsonLd = {
       {
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: "Strojové omietky" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Liaty polystyrénbetón" },
       },
     ],
   },

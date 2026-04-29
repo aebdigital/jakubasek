@@ -27,13 +27,19 @@ const services = [
     n: "04",
     title: "Špedícia & Logistika",
     text: "Vnútroštátna a medzinárodná preprava sypkých materiálov. Prepravu ponúkame s 25t vyklopnými návesmi.",
-    image: "/hero.webp",
+    image: "/referencie/fb-3.jpg",
   },
   {
     n: "05",
     title: "Strojové omietky",
     text: "Zabezpečujeme realizáciu stabilných a profesionálnych strojových omietok, ktoré vyrovnajú každú nerovnosť.",
     image: "/service2.webp",
+  },
+  {
+    n: "06",
+    title: "Liaty Polystyrén",
+    text: "Ľahký liaty polystyrénbetón pre tepelnú izoláciu a vyrovnávacie vrstvy pod potery. Rýchla aplikácia, vynikajúce izolačné vlastnosti.",
+    image: "/liaty.jpg",
   },
 ];
 
@@ -72,7 +78,7 @@ export default function Home() {
               data-speed="0.1"
             >
               <Image
-                src="/about.webp"
+                src="/referencie/fb-3.jpg"
                 alt="Štrk a kamenivo Jakubasek"
                 fill
                 priority
@@ -89,9 +95,11 @@ export default function Home() {
               <p className="fade-up text-primary text-sm font-black tracking-[0.4em] uppercase mb-8">
                 Kamenivo · Potery · Profesionálne omietky
               </p>
-              <h1 className="fade-up fade-up-1 text-7xl md:text-10xl lg:text-11xl font-black text-white leading-[0.85] tracking-tighter uppercase italic font-heading pr-4">
+              <h1 className="fade-up fade-up-1 text-5xl sm:text-6xl md:text-10xl lg:text-11xl font-black text-white leading-[0.85] tracking-tighter uppercase italic font-heading">
                 Staviame na <br />
-                <span className="fill-text-animation">Kvalite</span>
+                <span className="fill-text-animation inline-block pr-[0.15em]">
+                  Kvalite
+                </span>
               </h1>
               <p className="fade-up fade-up-2 mt-12 text-lg md:text-2xl text-white/70 font-light max-w-3xl leading-relaxed">
                 Zabezpečujeme predaj a dovoz štrku a kameniva, profesionálne
@@ -164,7 +172,7 @@ export default function Home() {
                   <div className="image-reveal-wrapper aspect-[4/3] lg:aspect-[5/4] shadow-2xl relative">
                     <div className="image-reveal-shutter" />
                     <Image
-                      src="/about.webp"
+                      src="/referencie/fb-3.jpg"
                       alt="Jaroslav Jakubasek pri práci"
                       fill
                       sizes="(min-width: 1024px) 50vw, 100vw"
