@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SiteChrome from "@/components/SiteChrome";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Ochrana osobných údajov",
@@ -10,30 +12,56 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const navLinks = [
+  { href: "/#top", label: "Úvod" },
+  { href: "/#onas", label: "O nás" },
+  { href: "/#sluzby", label: "Naše služby" },
+  { href: "/#referencie", label: "Referencie" },
+  { href: "/#kontakt", label: "Kontakt" },
+];
+
 export default function PrivacyPage() {
   return (
     <>
       <SiteChrome />
+      <SiteHeader navLinks={navLinks} homeHref="/" />
 
-      <main className="bg-light text-secondary pt-32 md:pt-40 pb-24 md:pb-32 min-h-screen">
-        <div className="mx-auto w-[95vw] max-w-4xl px-6 md:px-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-xs font-black tracking-[0.3em] uppercase text-primary hover:text-primary-dark transition-colors mb-10"
-          >
-            ← Späť na úvod
-          </Link>
+      <main>
+        <section className="relative h-[30vh] min-h-[280px] w-full flex items-end overflow-hidden bg-secondary text-white">
+          <div
+            className="absolute inset-0 z-0 pointer-events-none opacity-20"
+            style={{
+              backgroundImage: "url('/texture.svg')",
+              backgroundSize: "cover",
+              filter: "invert(1)",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-secondary/40" />
+          <div className="relative z-10 mx-auto w-[90vw] md:w-[95vw] px-0 md:px-10 pb-10 md:pb-14">
+            <p className="text-primary text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-4">
+              Právne informácie
+            </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase italic tracking-tighter">
+              Ochrana osobných údajov
+            </h1>
+          </div>
+        </section>
 
-          <h1 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-6">
-            Ochrana osobných údajov
-            <span className="text-primary">.</span>
-          </h1>
-          <p className="text-secondary/60 font-light text-base md:text-lg leading-relaxed mb-12">
-            Tento dokument popisuje, ako spracúvame osobné údaje pri prevádzke
-            webu jakubasek.eu a pri poskytovaní našich služieb v zmysle
-            Nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 (GDPR) a
-            zákona č. 18/2018 Z. z. o ochrane osobných údajov.
-          </p>
+        <section className="bg-light text-secondary py-20 md:py-28">
+          <div className="mx-auto w-[90vw] md:w-[95vw] max-w-4xl px-0 md:px-10">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-xs font-black tracking-[0.3em] uppercase text-primary hover:text-primary-dark transition-colors mb-10"
+            >
+              ← Späť na úvod
+            </Link>
+
+            <p className="text-secondary/60 font-light text-base md:text-lg leading-relaxed mb-12">
+              Tento dokument popisuje, ako spracúvame osobné údaje pri prevádzke
+              webu jakubasek.eu a pri poskytovaní našich služieb v zmysle
+              Nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 (GDPR) a
+              zákona č. 18/2018 Z. z. o ochrane osobných údajov.
+            </p>
 
           <div className="space-y-12 text-base md:text-lg font-light leading-relaxed">
             <section>
@@ -44,6 +72,9 @@ export default function PrivacyPage() {
                 <p className="text-xl font-black mb-2">Jaroslav Jakubašek</p>
                 <p className="text-secondary/70">Rovná 8, Dlhá Lúka</p>
                 <p className="text-secondary/70 mb-3">085 01 Bardejov</p>
+                <p className="text-secondary/70">IČO: 40298442</p>
+                <p className="text-secondary/70">DIČ: 1048352613</p>
+                <p className="text-secondary/70 mb-3">IČ DPH: SK1048352613</p>
                 <p className="text-secondary/70">
                   E-mail:{" "}
                   <a
@@ -195,6 +226,9 @@ export default function PrivacyPage() {
             </section>
           </div>
         </div>
+        </section>
+
+        <SiteFooter id="kontakt-gdpr" />
       </main>
     </>
   );

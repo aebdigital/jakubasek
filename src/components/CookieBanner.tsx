@@ -182,7 +182,7 @@ export default function CookieBanner() {
                 Nastavenia cookies
               </p>
               <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tight mb-6">
-                Vyberte si<span className="text-primary">.</span>
+                Vyberte si
               </h3>
               <p className="text-secondary/70 font-light text-sm leading-relaxed mb-8">
                 Niektoré cookies sú nevyhnutné pre fungovanie webu a nedajú sa

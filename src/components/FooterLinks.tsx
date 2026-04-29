@@ -5,13 +5,13 @@ import { openCookieSettings } from "@/components/CookieBanner";
 export default function FooterLinks() {
   return (
     <div className="flex flex-wrap gap-x-6 gap-y-2 items-center">
-      <a href="#onas" className="hover:text-primary transition-colors">
+      <a href="/#onas" className="hover:text-primary transition-colors">
         O nás
       </a>
-      <a href="#sluzby" className="hover:text-primary transition-colors">
+      <a href="/#sluzby" className="hover:text-primary transition-colors">
         Naše služby
       </a>
-      <a href="#referencie" className="hover:text-primary transition-colors">
+      <a href="/#referencie" className="hover:text-primary transition-colors">
         Referencie
       </a>
       <a
@@ -27,6 +27,14 @@ export default function FooterLinks() {
       >
         Cookies
       </button>
+      <a
+        href="https://aebdigital.sk"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-primary transition-colors"
+      >
+        Tvorba webu — AEB Digital
+      </a>
     </div>
   );
 }

@@ -117,8 +117,26 @@ const jsonLd = {
   name: "Jakubasek — Jaroslav Jakubašek",
   description: DESCRIPTION,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  image: [`${SITE_URL}/hero.webp`, `${SITE_URL}/about.webp`],
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+    width: 520,
+    height: 210,
+  },
+  image: [
+    {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/hero.webp`,
+      width: 1600,
+      height: 900,
+    },
+    {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/about.webp`,
+      width: 960,
+      height: 720,
+    },
+  ],
   telephone: "+421948300988",
   email: "jaroslavjakubasek@gmail.com",
   foundingDate: "2003",
@@ -128,12 +146,13 @@ const jsonLd = {
     streetAddress: "Rovná 8, Dlhá Lúka",
     postalCode: "085 01",
     addressLocality: "Bardejov",
+    addressRegion: "Prešovský kraj",
     addressCountry: "SK",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 49.3,
-    longitude: 21.27,
+    latitude: 49.3071,
+    longitude: 21.2787,
   },
   areaServed: [
     { "@type": "AdministrativeArea", name: "Prešovský kraj" },
@@ -190,7 +209,6 @@ const jsonLd = {
       },
     ],
   },
-  sameAs: [SITE_URL],
 };
 
 export default function RootLayout({
